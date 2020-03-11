@@ -1,21 +1,28 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include<iostream>
+#include<string>
 using namespace std;
 
-// bottom-up 방식 : 밑에서부터 올라간다(작은 문제에서 점점 큰 문제로감)
-
-int n;
-long long Fibo[100];
-
-long long Fibonacci(int n) {
-	Fibo[0] = 0;
-	Fibo[1] = 1;
-	for (int i = 2; i <= n; i++) Fibo[i] = Fibo[i - 2] + Fibo[i - 1];
-	return Fibo[n];
-}
+int A, B, C, mul;
+string str_mul;
+int number[10];
 
 int main() {
-	cin >> n;
-	cout << Fibonacci(n);
+	
+	scanf("%d", &A);
+	scanf("%d", &B);
+	scanf("%d", &C);
+	mul = A * B * C;
+	str_mul = to_string(mul);
+
+	int length = str_mul.size();
+
+	for (int i = 0; i < length; i++) {
+		int num = str_mul[i] - '0';
+		number[num]++;
+	}
+
+	for (int i = 0; i < 10; i++) printf("%d\n", number[i]);
 
 	return 0;
 }
